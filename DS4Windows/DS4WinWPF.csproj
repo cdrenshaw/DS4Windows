@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net8.0-windows</TargetFramework>
+    <TargetFramework>net9.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <Platforms>x64;x86</Platforms>
     <RuntimeIdentifiers>win-x64;win-x86</RuntimeIdentifiers>
@@ -25,17 +24,14 @@
     <Authors>Ryochan7</Authors>
     <Company />
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>$(DefineConstants);WIN64</DefineConstants>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>$(DefineConstants)</DefineConstants>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <DefineConstants>WIN64</DefineConstants>
@@ -45,22 +41,20 @@
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <DefineConstants></DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <ErrorReport>none</ErrorReport>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
     <GenerateSerializationAssemblies>Auto</GenerateSerializationAssemblies>
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="libs\x64\**" Condition="'$(Platform)' != 'x64'" />
     <None Remove="libs\x86\**" Condition="'$(Platform)' != 'x86'" />
   </ItemGroup>
-
   <ItemGroup>
     <Content Include="BezierCurveEditor\build.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -69,7 +63,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="bloomtom.HttpProgress" Version="2.3.2" />
     <PackageReference Include="DotNetProjects.Extended.Wpf.Toolkit" Version="5.0.106" />
@@ -78,28 +71,23 @@
     <PackageReference Include="NLog" Version="5.1.1" />
     <!--<PackageReference Include="Nefarius.ViGEm.Client" Version="1.21.230" />-->
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="5.0.1" />
-    <PackageReference Include="System.Management" Version="7.0.2" />
+    <PackageReference Include="System.Management" Version="9.0.1" />
     <PackageReference Include="TaskScheduler" Version="2.10.1" />
     <PackageReference Include="WPFLocalizeExtension" Version="3.9.4" />
     <PackageReference Include="WpfScreenHelper" Version="2.1.0" />
-    
     <Reference Include="FakerInputWrapper">
       <HintPath>..\libs\$(Platform)\FakerInputWrapper\FakerInputWrapper.dll</HintPath>
     </Reference>
-
     <Reference Include="SharpOSC">
       <HintPath>..\libs\$(Platform)\SharpOSC\SharpOSC.dll</HintPath>
     </Reference>
-
     <Reference Include="Nefarius.ViGEm.Client">
       <HintPath>..\libs\$(Platform)\Nefarius.ViGEm.Client\Nefarius.ViGEm.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
-
   <!-- Apparently the None tags are needed as well as the Resource tags.
        Without the None, app slowdown occurs for me. Why?!!! -->
   <ItemGroup>
-
     <None Include="Resources\DS4 Config_white.png" />
     <None Include="Resources\newprofile_white.png" />
     <None Include="Resources\copy_white.png" />
@@ -154,7 +142,6 @@
     <None Include="Resources\DS4 Config.png" />
     <None Include="Resources\Pairmode.png" />
     <None Include="Resources\USB.png" />
-
     <None Include="Resources\newprofile.png" />
     <None Include="Resources\BT.png" />
     <None Include="Resources\cancel.png" />
@@ -166,11 +153,8 @@
     <None Include="Resources\delete.png" />
     <None Include="Resources\export.png" />
     <None Include="Resources\import.png" />
-
   </ItemGroup>
-
   <ItemGroup>
-
     <Resource Include="Resources\DS4 Config_white.png" />
     <Resource Include="Resources\newprofile_white.png" />
     <Resource Include="Resources\copy_white.png" />
@@ -225,7 +209,6 @@
     <Resource Include="Resources\DS4 Config.png" />
     <Resource Include="Resources\Pairmode.png" />
     <Resource Include="Resources\USB.png" />
-
     <Resource Include="Resources\newprofile.png" />
     <Resource Include="Resources\BT.png" />
     <Resource Include="Resources\cancel.png" />
@@ -237,9 +220,7 @@
     <Resource Include="Resources\delete.png" />
     <Resource Include="Resources\export.png" />
     <Resource Include="Resources\import.png" />
-    
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -252,7 +233,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
@@ -268,19 +248,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-
   <ItemGroup>
     <EmbeddedResource Update="Translations\Strings.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-
     <Compile Update="Translations\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
-
     <EmbeddedResource Update="Translations\Strings.ar.resx">
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
@@ -354,7 +331,6 @@
       <DependentUpon>Strings.resx</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-
   <ItemGroup>
     <None Update="libs\$(Platform)\FakerInputWrapper\FakerInputDll.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -368,11 +344,9 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Folder Remove="extras\" />
   </ItemGroup>
-
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="rem Copy compiled l18n assemblies to alt folder&#xD;&#xA;GOTO END&#xD;&#xA;if not exist $(TargetDir)Lang mkdir $(TargetDir)Lang&#xD;&#xA;set langs=ar cs de el es fi fr he hu-HU idn it ja ms nl pl pt pt-BR ru se tr uk-UA vi zh-Hans zh-Hant&#xD;&#xA;&#xD;&#xA;for %25%25l in (%25langs%25) do (&#xD;&#xA;  xcopy $(TargetDir)%25%25l $(TargetDir)Lang\%25%25l\ /s /y&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;echo $(Version)&gt; $(ProjectDir)\newest.txt&#xD;&#xA;&#xD;&#xA;:END&#xD;&#xA;" />
   </Target>
